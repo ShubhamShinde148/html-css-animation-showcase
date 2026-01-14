@@ -1,0 +1,711 @@
+:root {
+    --bg-color: #1a1a2e;
+    --card-bg: #16213e;
+    --text-color: #e94560;
+    --accent-color: #0f3460;
+    --white: #ffffff;
+    --neon-blue: #00f3ff;
+    --neon-pink: #bc13fe;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--white);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    /* Increased max-width for more cards */
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--text-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.demo-area {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    perspective: 1000px;
+}
+
+/* 1. Pulsing Button */
+.pulse-btn {
+    background-color: var(--text-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 rgba(233, 69, 96, 0.7);
+    animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes pulse {
+    to {
+        box-shadow: 0 0 0 20px rgba(233, 69, 96, 0);
+    }
+}
+
+/* 2. Hover Lift */
+.lift-box {
+    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    color: #333;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.lift-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+/* 3. Loading Spinner */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--neon-blue);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 4. Typing Text */
+.typing-container {
+    display: inline-block;
+}
+
+.typing-text {
+    overflow: hidden;
+    border-right: .15em solid var(--text-color);
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+    font-family: monospace;
+    font-size: 1rem;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--text-color);
+    }
+}
+
+/* 5. Bouncing Ball */
+.bouncer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100px;
+    justify-content: flex-end;
+}
+
+.ball {
+    width: 30px;
+    height: 30px;
+    background-color: var(--neon-blue);
+    border-radius: 50%;
+    animation: bounce 0.5s cubic-bezier(0.19, 1, 0.22, 1) infinite alternate;
+}
+
+.shadow {
+    width: 30px;
+    height: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    margin-top: 5px;
+    animation: shrink 0.5s cubic-bezier(0.19, 1, 0.22, 1) infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-60px);
+    }
+}
+
+@keyframes shrink {
+    from {
+        transform: scaleX(1);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: scaleX(0.5);
+        opacity: 0.1;
+    }
+}
+
+/* 6. Neon Sign */
+.neon-text {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--white);
+    text-shadow:
+        0 0 7px var(--white),
+        0 0 10px var(--white),
+        0 0 21px var(--white),
+        0 0 42px var(--neon-pink),
+        0 0 82px var(--neon-pink),
+        0 0 92px var(--neon-pink),
+        0 0 102px var(--neon-pink),
+        0 0 151px var(--neon-pink);
+    animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+
+    0%,
+    18%,
+    22%,
+    25%,
+    53%,
+    57%,
+    100% {
+        text-shadow:
+            0 0 7px var(--white),
+            0 0 10px var(--white),
+            0 0 21px var(--white),
+            0 0 42px var(--neon-pink),
+            0 0 82px var(--neon-pink),
+            0 0 92px var(--neon-pink),
+            0 0 102px var(--neon-pink),
+            0 0 151px var(--neon-pink);
+    }
+
+    20%,
+    24%,
+    55% {
+        text-shadow: none;
+    }
+}
+
+/* 7. Flip Card */
+.flip-card {
+    background-color: transparent;
+    width: 150px;
+    height: 100px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+}
+
+.flip-card-back {
+    background-color: var(--neon-blue);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* 8. Gradient Border */
+.gradient-box {
+    position: relative;
+    padding: 20px 40px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.gradient-box::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    z-index: -1;
+    background-size: 400%;
+    animation: glowing 20s linear infinite;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+/* 9. Glitch Effect */
+.glitch {
+    position: relative;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--white);
+    letter-spacing: 3px;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -1px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -1px 0 #00fff9;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(30px, 9999px, 10px, 0);
+    }
+
+    100% {
+        clip: rect(30px, 9999px, 80px, 0);
+    }
+}
+
+@keyframes glitch-anim2 {
+    0% {
+        clip: rect(10px, 9999px, 80px, 0);
+    }
+
+    100% {
+        clip: rect(10px, 9999px, 50px, 0);
+    }
+}
+
+/* 10. Floating Element */
+.float-icon {
+    font-size: 3rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* --- NEW ANIMATIONS --- */
+
+/* 11. Shake Error */
+.shake-btn {
+    padding: 10px 20px;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.shake-btn:hover {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* 12. Text Wave */
+.wave-text span {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    animation: wave 1s infinite;
+}
+
+.wave-text span:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.wave-text span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.wave-text span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.wave-text span:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+@keyframes wave {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* 13. Newton's Cradle */
+.cradle {
+    display: flex;
+    border-top: 5px solid var(--white);
+    padding-top: 5px;
+}
+
+.cradle span {
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: var(--white);
+    border-radius: 50%;
+    margin: 0 2px;
+    position: relative;
+    transform-origin: 50% -30px;
+    /* Pivot point above */
+}
+
+.cradle span::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 7px;
+    width: 1px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.cradle span:first-child {
+    animation: left-swing 1s infinite ease-in-out alternate;
+}
+
+.cradle span:last-child {
+    animation: right-swing 1s infinite ease-in-out alternate 1s;
+}
+
+@keyframes left-swing {
+    0% {
+        transform: rotate(30deg);
+    }
+
+    50%,
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes right-swing {
+    0% {
+        transform: rotate(-30deg);
+    }
+
+    50%,
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* 14. Card Zoom */
+.zoom-box {
+    width: 100px;
+    height: 100px;
+    background-color: var(--accent-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.zoom-box:hover {
+    transform: scale(1.2);
+}
+
+/* 15. 3D Tilt */
+.tilt-box {
+    width: 120px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transform: perspective(500px) rotateY(0deg);
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+.tilt-box:hover {
+    transform: perspective(500px) rotateY(20deg) rotateX(10deg);
+}
+
+/* 16. Sliding Underline */
+.slide-link {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.2rem;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.slide-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--neon-blue);
+    transition: width 0.3s ease-out;
+}
+
+.slide-link:hover::after {
+    width: 100%;
+}
+
+/* 17. Rotating Border */
+.rotate-border-box {
+    position: relative;
+    padding: 15px 30px;
+    background: var(--card-bg);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.rotate-border-box::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: conic-gradient(transparent, transparent, transparent, var(--neon-pink));
+    animation: rotate-border 4s linear infinite;
+    transform: translate(-50%, -50%);
+    z-index: -2;
+}
+
+.rotate-border-box::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: var(--card-bg);
+    z-index: -1;
+    border-radius: 3px;
+}
+
+@keyframes rotate-border {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* 18. Focus Expand */
+.expand-input {
+    padding: 10px;
+    border: 1px solid #555;
+    background: transparent;
+    color: white;
+    border-radius: 5px;
+    width: 100px;
+    transition: width 0.4s ease;
+}
+
+.expand-input:focus {
+    width: 180px;
+    border-color: var(--neon-blue);
+    outline: none;
+}
+
+/* 19. Social Pop */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.icon:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.icon.facebook:hover {
+    background-color: #3b5998;
+}
+
+.icon.twitter:hover {
+    background-color: #1da1f2;
+}
+
+.icon.instagram:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+/* 20. Curtain Reveal */
+.curtain-text {
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: transparent;
+    /* Hide text initially */
+    overflow: hidden;
+}
+
+.curtain-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--white);
+    width: 0;
+    overflow: hidden;
+    transition: width 0.5s ease-in-out;
+    white-space: nowrap;
+    border-right: 2px solid var(--neon-blue);
+}
+
+.card:hover .curtain-text::after {
+    width: 100%;
+}
